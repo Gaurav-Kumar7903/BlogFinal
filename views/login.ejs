@@ -1,0 +1,32 @@
+<%- include ('partials/header') %>
+
+<div class="ui inverted segment">
+  <div class="ui inverted secondary menu">
+    <a href="/">
+      <button class="ui labeled icon button">
+        <i class="code icon"></i>
+        Home
+      </button>
+    </a>
+  </div>
+</div>
+
+<div class="ui container">
+  <h1 class="ui header">Login</h1>
+  <div class="ui items">
+    <form class="ui form" action="/login" method="POST">
+      <div class="field item">
+        <label>Username</label>
+        <input type="text" name="username" placeholder="username" />
+      </div>
+      <div class="field item">
+        <label>password</label>
+        <input type="password" name="password" placeholder="password" />
+      </div>
+
+      <button class="ui primary button" type="submit">Login</button>
+    </form>
+    <span>Not a member ? </span>
+    <a href="/register"> SignUp</a>
+  </div>
+</div>

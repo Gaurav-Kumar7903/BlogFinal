@@ -1,0 +1,68 @@
+<%- include ('partials/header') %>
+
+<style type="text/css">
+  body {
+    background-color: #dadada;
+  }
+  body > .grid {
+    height: 100%;
+  }
+  .image {
+    margin-top: -100px;
+  }
+  .column {
+    max-width: 500px;
+    /* height: 800px; */
+  }
+</style>
+
+<div class="ui inverted segment">
+  <div class="ui inverted secondary menu">
+    <a href="/">
+      <button class="ui labeled icon button">
+        <i class="code icon"></i>
+        Home
+      </button>
+    </a>
+  </div>
+</div>
+
+<div class="ui aligned center aligned grid">
+  <div class="column">
+    <h2 class="ui teal image header">
+      <img
+        src="https://st2.depositphotos.com/3921439/8062/v/950/depositphotos_80625698-stock-illustration-the-speech-bubble-with-a.jpg"
+        class="image"
+      />
+      <div class="content">
+        Register Now
+      </div>
+    </h2>
+    <form class="ui large form error" action="/register" method="Post">
+      <div class="ui stacked segment">
+        <div class="field error">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input type="text" name="username" placeholder="Username" />
+          </div>
+        </div>
+        <div class="field error">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input type="password" name="password" placeholder="Password" />
+          </div>
+        </div>
+        <button class="ui fluid large teal submit button">Register</button>
+        <!-- <div class="ui fluid large teal submit button">Register</div> -->
+      </div>
+
+      <div class="ui error message"></div>
+      <!-- <ul class="list">
+          <li>Please enter a valid username</li>
+          <li>Your password must be at least 6 characters</li>
+        </ul> -->
+    </form>
+
+    <div class="ui message">Already a member? <a href="/login">Login</a></div>
+  </div>
+</div>

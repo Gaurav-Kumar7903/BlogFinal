@@ -1,0 +1,78 @@
+<%- include ('../partials/header') %>
+
+<div class="ui inverted segment">
+  <div class="ui inverted secondary menu">
+    <a href="/">
+      <button class="ui labeled icon button">
+        <i class="code icon"></i>
+        Home
+      </button>
+    </a>
+  </div>
+</div>
+<div id="container" class="ui container">
+  <div id="items" class="ui items">
+    <div class="item">
+      <div class="image">
+        <img src="<%= blog.image %>" />
+      </div>
+      <div class="content">
+        <a class="header"><%= blog.title %></a>
+        <div class="meta">
+          <span><%= blog.date %></span>
+        </div>
+        <div class="description">
+          <p><strong><%= blog.author.username %></strong></p>
+          <p><%= blog.content %></p>
+        </div>
+        <% if(currentUser && currentUser._id.equals(blog.author.id)) { %>
+        <div class="extra">
+          <nav style="display: inline-flex;">
+            <form action="/blogs/<%=blog._id %>/edit" method="GET">
+              <button class="ui secondary button">Edit</button>
+            </form>
+            <form action="/blogs/<%=blog._id %>?_method=DELETE" method="POST">
+              <button class="ui red button">Delete</button>
+            </form>
+          </nav>
+        </div>
+        <%} %>
+      </div>
+    </div>
+    <hr />
+  </div>
+</div>
+
+<div class="ui container" style="margin-top: 50px; background-color: darkgray;">
+  <h2 style="padding-left: 3%; display: inline;">Comment Goes Here!!!</h2>
+  <a
+    href="/blogs/<%= blog._id %>/comments/new"
+    class="ui primary button"
+    style="float: right;"
+    >Add Comment</a
+  >
+  <div class="ui items" style="padding-left: 4%;">
+    <% blog.comments.forEach((comment)=>{ %>
+    <div class="item" style="display: inline-block;">
+      <p><strong><%= comment.author.username %></strong></p>
+      <p><%= comment.message %></p>
+      <% if(currentUser && currentUser._id.equals(comment.author.id)){%>
+      <a
+        href="/blogs/<%= blog._id %>/comments/<%= comment._id %>/edit"
+        class="small ui orange button"
+        style="display: inline-block;"
+        >Edit</a
+      >
+      <form
+        action="/blogs/<%= blog._id %>/comments/<%= comment._id %>?_method=DELETE"
+        method="POST"
+        style="display: inline-block;"
+      >
+        <!-- <a href="#" class="small ui red button">Delete</a> -->
+        <button class="small ui red button">Delete</button>
+      </form>
+      <% } %>
+    </div>
+    <% }) %>
+  </div>
+</div>

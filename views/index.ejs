@@ -1,0 +1,80 @@
+<%- include ('partials/header') %>
+<!-- <h1 id="test">hello</h1> -->
+<!-- <div class="ui inverted segment">
+  <div class="ui inverted secondary menu"> -->
+<div class="ui menu" style="background-color: black;">
+  <div class="item">
+    <a href="/">
+      <button class="ui labeled icon button">
+        <i class="code icon"></i>
+        Blog
+      </button>
+    </a>
+  </div>
+  <div class="item">
+    <a id="right" class="menu" href="blogs/new">
+      <button class="ui right labeled icon button">
+        <i class="plus icon"></i>
+        AddBlog
+      </button>
+    </a>
+  </div>
+  <% if(!currentUser){ %>
+  <div class="right menu">
+    <div class="item">
+      <a href="/login" class="ui button">
+        Login
+      </a>
+    </div>
+    <div class="item">
+      <a href="/register" class="ui primary button">
+        SignUp
+      </a>
+    </div>
+  </div>
+  <% } else{ %>
+  <div class="right menu">
+    <div class="item">
+      <h4 style="background-color: white;"><%= currentUser.username %></h4>
+    </div>
+    <div class="item">
+      <a href="/logout" class="ui primary button">
+        LogOut
+      </a>
+    </div>
+  </div>
+  <% } %>
+</div>
+
+<!-- </div>
+</div> -->
+<div id="container" class="ui container">
+  <div id="items" class="ui items">
+    <% blogs.forEach((blog)=>{ %>
+    <div class="item">
+      <div class="image">
+        <img src="<%= blog.image %>" />
+      </div>
+      <div class="content">
+        <a class="header"><%= blog.title %></a>
+        <div class="meta">
+          <span><%= blog.date %></span>
+        </div>
+        <div class="description">
+          <p><strong><%= blog.author.username %></strong></p>
+          <p><b><%= blog.content.substring(0,100) %> ...</b></p>
+        </div>
+        <div class="extra">
+          <nav>
+            <a class="ui blue button" href="/blogs/<%=blog._id %>">
+              Read-More
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <hr />
+
+    <% }) %>
+  </div>
+</div>
